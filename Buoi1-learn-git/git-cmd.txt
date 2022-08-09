@@ -11,3 +11,7 @@
 conflict khi 2 người sửa cùng 1 dòng. 
 - gọi ông A ra hỏi xem dòng này bây h sẽ lấy code của ai là hợp.
 - đẩy code đúng lên
+
+xử lý: 
+git pull: để lấy code trên remote về so sanh xem sai ở đâu
+sửa: lấy code của mình, code của remote hoặc cả 2.
