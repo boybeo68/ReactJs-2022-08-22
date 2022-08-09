@@ -1,0 +1,3 @@
+- git init: Tạo version git ở phía local: => đối chiếu với repo
+- git add . : cho tất cả các file/folder vào git local
+- git status: kiểm tra xem muốn đẩy cái gì lên git: 
