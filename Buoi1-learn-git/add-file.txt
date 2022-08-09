@@ -5,4 +5,5 @@ ongB thêm file
 ông B cũng đang sửa dòng này. 
 ong A lai them vao
 ông B cũng đang sửa dòng này.
+Ong a sửa dòng 8
 ông B cũng sửa dòng 8
