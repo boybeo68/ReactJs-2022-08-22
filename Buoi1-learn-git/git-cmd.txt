@@ -4,3 +4,4 @@
 - git commit -m"message" : tất cả những file đã được add vào git local sẽ ném lên git remote
 - git remote add origin https://github.com/boybeo68/ReactJs-2022-08-22.git: thêm link remote vào local
 - git remote add newName https://github.com/boybeo68/ReactJs-2022-08-22-abcd.git: thêm link remote vào local
+- git push: đẩy source từ phía local lên remote (nếu trên remote chưa có nhánh master thì phải gõ lênh git push --set-upstream origin master)
