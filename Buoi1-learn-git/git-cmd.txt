@@ -1,7 +1,7 @@
-- git init: Tạo version git ở phía local: => đối chiếu với repo
-- git add . : cho tất cả các file/folder vào git local
+- 1: git init: Tạo version git ở phía local: => đối chiếu với repo
+- 2: git add . : cho tất cả các file/folder vào git local
 - git status: kiểm tra xem các file local đã có trong git local chưa
-- git commit -m"message" : tất cả những file đã được add vào git local sẽ ném lên git remote
-- git remote add origin https://github.com/boybeo68/ReactJs-2022-08-22.git: thêm link remote vào local
+- 3: git commit -m"message" : tất cả những file đã được add vào git local sẽ ném lên git remote
+- 4: git remote add origin https://github.com/boybeo68/ReactJs-2022-08-22.git: thêm link remote vào local
 - git remote add newName https://github.com/boybeo68/ReactJs-2022-08-22-abcd.git: thêm link remote vào local
-- git push: đẩy source từ phía local lên remote (nếu trên remote chưa có nhánh master thì phải gõ lênh git push --set-upstream origin master)
+- 5: git push: đẩy source từ phía local lên remote (nếu trên remote chưa có nhánh master thì phải gõ lênh git push --set-upstream origin master)
