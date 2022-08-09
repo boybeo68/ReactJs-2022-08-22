@@ -6,3 +6,5 @@
 - git remote add newName https://github.com/boybeo68/ReactJs-2022-08-22-abcd.git: thêm link remote vào local
 - 5: git push: đẩy source từ phía local lên remote (nếu trên remote chưa có nhánh master thì phải gõ lênh git push --set-upstream origin master)
 - git clone {link git}
+- Ong A sưa source code 
+_ Ong a Sưa tiếp 
