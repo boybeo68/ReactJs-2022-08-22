@@ -2,3 +2,5 @@
 - git add . : cho tất cả các file/folder vào git local
 - git status: kiểm tra xem các file local đã có trong git local chưa
 - git commit -m"message" : tất cả những file đã được add vào git local sẽ ném lên git remote
+- git remote add origin https://github.com/boybeo68/ReactJs-2022-08-22.git: thêm link remote vào local
+- git remote add newName https://github.com/boybeo68/ReactJs-2022-08-22-abcd.git: thêm link remote vào local
