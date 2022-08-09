@@ -7,3 +7,7 @@
 - 5: git push: đẩy source từ phía local lên remote (nếu trên remote chưa có nhánh master thì phải gõ lênh git push --set-upstream origin master)
 - git clone {link git}
 - git pull: lấy dữ liệu mới nhát từ remote về
+
+conflict khi 2 người sửa cùng 1 dòng. 
+- gọi ông A ra hỏi xem dòng này bây h sẽ lấy code của ai là hợp.
+- đẩy code đúng lên
