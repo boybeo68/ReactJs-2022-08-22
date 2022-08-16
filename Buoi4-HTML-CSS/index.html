@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>HTML form</title>
 </head>
+<style>
+    /* reset css */
+    /* * {
+        margin: 0;
+        padding: 0;
+    } */
+    h3 {
+        color: burlywood;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    /* h4 {
+        background-color: aqua;
+    } */
+    #number2, #number4 {
+        background-color: aqua;
+    }
+    .group1-3 {
+        background-color: blue;
+    }
+    /* .ong {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .cha {
+        width: 70px;
+        height: 70px;
+        background-color: bisque;
+    }
+    .cha > div {
+        width: 50px;
+        height: 50px;
+        background-color: blueviolet;
+    } */
+    /* stle cho tất cả các thẻ div năm trong body */
+    body div {
+        width: 70px;
+        height: 70px;
+        background-color: bisque;
+    }
+    /* style cho tất cả class name nằm trong body */
+    body #tung {
+        width: 70px;
+        height: 70px;
+        background-color: bisque;
+    }
+    div h1 {
+        background-color: black;
+    }
+</style>
 <body>
     <!-- tables -->
     <!-- để đẩy dử liệu lển server chúng ta cần 2 cái: action và method -->
@@ -38,7 +90,53 @@
           </select>
           <input type="submit">   
     </form>
-    <iframe width="1000" height="1000" src="https://dantri.com.vn/" title="W3Schools Free Online Web Tutorials">
+    <div>
+        <h1>h1 năm tron thẻ div</h1>
+    </div>
+    <!-- <iframe width="1000" height="1000" src="https://dantri.com.vn/" title="W3Schools Free Online Web Tutorials"> -->
+        
+        <!-- Cách để nhúng CSS vào HTML -->
+        <!-- 1 inline style -->
+        <!-- 2 internal style -->
+        <!-- 3 external style -->
+        <!-- cấu trúc 1 css: property:value -->
+        <p style="color: red; background-color: blue; padding: 20px; text-align: center;">inline style</ơ>
+        <h3>internal style</h3>
+        <h3>external style</h3>
+        <!-- overide css:  -->
+        <!-- ưu tiên từ inline > internal > external  -->
+
+        <!-- các cách selector ( trỏ đến element muốn css) cơ bản -->
+        <!-- 1.html selector ( select luôn tên thẻ) -->
+        <!-- 2. id selector sử dụng "#"" : id là duy nhất trong 1 page html-->
+        <!-- 3. class selector sử dụng "." -->
+        <h4 class="group1-3">H4 số 1</h4>
+        <h4 id="number2">H4 số 2</h4>
+        <h4 class="group1-3">H4 số 3</h4>
+        <h4 id="number4">H4 số 4</h4>
+        <!-- 4. univer selector *: tất cả -->
+        <!-- 5. phân cấp cha con sử dụng dấu  >  -->
+        <div class="ong">
+            <div class="cha">
+                <div class="con">
+                    <div class="chau"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 6. phân cấp trong ngoài -->
+        <div class="ong">
+            <div class="cha">
+                <div class="con">
+                    <div class="chau"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 7. nhiều selector sử dụng chung 1 css: sử dụng dấu "," -->
     </iframe>
 </body>
 </html>
+<!-- Thực hành -->
+<!-- nhúng css vào html 3 cách:  -->
+<!-- 3 selector cơ bản: html, id, class -->
+<!-- selector phân câp cha con >, trong ngoài dấu cách -->
+<!-- gom nhiều selector sử dụng chung css (dấu phẩy) -->
