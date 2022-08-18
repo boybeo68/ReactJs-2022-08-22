@@ -58,7 +58,63 @@
         font-family: 'Alumni Sans Collegiate One', sans-serif;
       }
       .font-offline {
+        font-size: 50px;
         font-family: 'font cua Tung';
+        color: red;
+        font-weight: bold;
+        text-decoration: line-through;
+        text-align: center;
+        border: 1px dashed red;
+        /* background: blue; */
+      }
+      #font-text {
+        color: blue;
+        text-align: center;
+        border: 1px solid red;
+      }
+      .block {
+        width: 200px;
+        height: 200px;
+        background: blue;
+        display: inline;
+      }
+      .inline {
+        width: 200px;
+        height: 200px;
+        background: red;
+        display: inline;
+      }
+      p {
+        color: red;
+      }
+
+      p.ex1 {
+        display: none;
+      }
+      p.ex2 {
+        display: inline;
+        width: 200px;
+        height: 300px;
+      }
+      p.ex3 {
+        display: block;
+      }
+      p.ex4 {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        padding-left: 100px;
+        background-color: blue;
+        /* padding-top: 10px; */
+      }
+      .box .content {
+        background-color: red;
+        width: 100px;
+        height: 100px;
       }
     </style>
   </head>
@@ -86,5 +142,46 @@
     <!-- add front chữ vào project -->
     sử dụng link cdn.
     <p class="font-offline">Font offline</p>
+    <span id="font-text">font text</span>
+    p default: block
+    <h1>The display Property</h1>
+
+    <h2>display: none:</h2>
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam
+      at erat pulvinar, at pulvinar felis blandit.
+      <p class="ex1">HELLO WORLD!</p>
+      Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+    </div>
+
+    <h2>display: inline:</h2>
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam
+      at erat pulvinar, at pulvinar felis blandit.
+      <p class="ex2">HELLO WORLD!</p>
+      Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+    </div>
+
+    <h2>display: block:</h2>
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam
+      at erat pulvinar, at pulvinar felis blandit.
+      <p class="ex3">HELLO WORLD!</p>
+      Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+    </div>
+
+    <h2>display: inline-block:</h2>
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam
+      at erat pulvinar, at pulvinar felis blandit.
+      <p class="ex4">HELLO WORLD!</p>
+      Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+    </div>
+    <!-- box model -->
+    <h1>Box model</h1>
+    <div class="box">
+      <!-- padding có thể làm thay đổi size của box -->
+      <div class="content"></div>
+    </div>
   </body>
 </html>
