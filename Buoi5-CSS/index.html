@@ -116,6 +116,22 @@
         width: 100px;
         height: 100px;
       }
+      .wrap {
+        background-color: red;
+        width: 300px;
+        height: 300px;
+        position: relative;
+      }
+      .wrap-child {
+        background-color: blue;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        /* left: 100px;
+        top: 50px; */
+        bottom: 20px;
+        right: 10px;
+      }
     </style>
   </head>
 
@@ -182,6 +198,13 @@
     <div class="box">
       <!-- padding có thể làm thay đổi size của box -->
       <div class="content"></div>
+    </div>
+
+    <h1>Learn position</h1>
+    <div class="wrap">
+      <div class="wrap-child">
+
+      </div>
     </div>
   </body>
 </html>
