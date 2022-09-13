@@ -21,3 +21,6 @@ const normalizeName = (name) => {
 };
 console.log(normalizeName('NguyeN THI tho tHu hA'));
 // nguyen thi tho thu ha
+
+// btvn: 11 - 17;
+//
