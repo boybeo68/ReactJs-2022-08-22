@@ -37,6 +37,7 @@ console.log(obj2.hasOwnProperty('products'));
 
 // Array (mảng/list) cũng là object
 let arr = [1, 2, 3, 4, 5];
+let arr5 = [];
 let arr2 = ['Tung', 32, false, undefined, null, 10.2]; // 0,1,2,3,4,5 : index của array
 console.log(arr2[5]);
 
@@ -50,6 +51,8 @@ let products = [
   {id: 3, name: 'samsung', price: 4000},
   {id: 4, name: 'oppo', price: 5000},
 ];
+let dataDelete = products.shift();
+
 for (let index = 0; index < products.length; index++) {
   const element = products[index];
   console.log('element thứ index là', index, element['name']);
