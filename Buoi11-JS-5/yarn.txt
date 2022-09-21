@@ -1,0 +1,11 @@
+npm init -y 
+yarn add tenthuvien
+=> thư viện sẽ được add vào dependencies của package.json
+để bỏ node_modules không đẩy lên git => sử dụng .gitignore => /node_modules
+=> clone source code bất kỳ mà có package.json => tức source đó cần cài thêm thưu viện bên ngoài 
+=> yarn install để kéo hết thư viện về máy
+
+để sử dụng 1 thư viện => require
+
+
+Thư viện mà bản thân node có
