@@ -1,0 +1,1 @@
+[{"name":"Hoang","age":12,"sex":"male","id":"mBquwIkQy","score":20,"avg":10},{"name":"Cuong","age":20,"sex":"male","id":"uOpVIFNVu","score":12,"avg":10},{"name":"Tung","age":23,"sex":"female","id":"XEhRzJKQ8","score":10,"avg":1}]
