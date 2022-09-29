@@ -1,12 +1,3 @@
-// Tính diện tích hình thang
-// (a + b) *h /2 *2 /4 + 8 + 2 / 6
-
-// phép công xử lý mất 3s
-// phép  nhân xử lý mất 2s,
-// phép chia xử lý mất 5s
-// kết quả tính diện tích hình thang
-// 3 trạng thái: pending, fulfilled, reject
-
 const congPromise = (a, b) => {
   console.log('start cong');
 
@@ -21,10 +12,6 @@ const congPromise = (a, b) => {
     }, 3000);
   }); // biến function thành dạng promise
 };
-
-// const congDemo = (a, b) => {
-//   return a + b;
-// };
 
 const nhanPromise = (a, b) => {
   console.log('start nhan');
@@ -58,36 +45,19 @@ const chiaPromise = (a, b) => {
   });
 };
 
-const ketqua = () => {
-  congPromise(5, 8)
-    .then((res) => nhanPromise(res, 'tung'))
-    .then((resNhan) => chiaPromise(resNhan, 9))
-    .then((final) => {
-      console.log('kết quả cuối cùng là: ', final);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+const ketqua = async (cb) => {
+  try {
+    let resultCong = await congPromise(10, 5);
+    let resultNhan = await nhanPromise(resultCong, 7);
+    let final = await chiaPromise(resultNhan, 2);
+    return cb(final);
+  } catch (error) {
+    console.log('loi ', error);
+  }
 };
-
-// ketqua();
-
-// chạy tuần tự.
-// chạy song song promise.all
-// chạy đua: promise.race
-
-Promise.all([congPromise(5, 6), nhanPromise(2, '2'), chiaPromise(8, 9)])
-  .then((resolve) => {
-    console.log(resolve);
-  })
-  .catch((e) => {
-    console.log('error: ', e);
-  });
-
-Promise.race([congPromise(5, 6), nhanPromise(2, '3'), chiaPromise(8, 9)])
-  .then((resolve) => {
-    console.log('race:', resolve);
-  })
-  .catch((e) => {
-    console.log('race error: ', e);
-  });
+// - chỉ chạy await được cho những function dang promise
+// - handle lỗi của async: sử dung try/catch
+let a = 0;
+ketqua((final) => {
+  console.log('final', final);
+});
