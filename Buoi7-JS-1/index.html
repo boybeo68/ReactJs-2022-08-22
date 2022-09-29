@@ -7,13 +7,16 @@
     <title>Document</title>
   </head>
   <body>
-    <h3>Cách run Js</h3>
+    <h3 id="6">Cách run Js</h3>
     3 cách phổ biến <br />
     - Sử dụng trong html thông qua thẻ script <br />
     - Sử dụng node <br />
     - Sử dụng trình duyệt chú ý: chạy thông qua html hay trình duyệt thì sẽ hỗ
     trợ 1 số hàm đặc trưng mà chỉ trình duyệt mới có, tương tự chạy thông qua
     node cũng vậy
-    <script src="./index.js"></script>
+    <script src="./index.js">
+      const dataH3 = document.getElementById('6')
+      dataH3.innerHTML= "Test"
+    </script>
   </body>
 </html>
