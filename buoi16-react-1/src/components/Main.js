@@ -3,8 +3,11 @@ import {Form, Button, Row, Col} from 'react-bootstrap';
 // data và render của react.
 // let number = 20;
 function Main() {
+  // let numberOfGuess = 0
+  // setNumberOfGuess(numberOfGuess + 10) => numberOfGuess = numberOfGuess + 10
   const [numberOfGuess, setNumberOfGuess] = useState(0);
-  const [inputValue, setInputValue] = useState(null);
+
+  const [inputValue, setInputValue] = useState(0);
   const [resultText, setResultText] = useState('');
   const [randomNumber, setRanDomNumber] = useState(
     Math.floor(Math.random() * 100 + 1),
@@ -16,7 +19,7 @@ function Main() {
     setResultText('');
   };
   const guess = () => {
-    setNumberOfGuess(numberOfGuess + 1); //setState là hàm bất đồng bộ.
+    // đăng sau await phải là 1 promise
     console.log(numberOfGuess);
     if (numberOfGuess > 6) {
       setResultText('Bạn thua rồi');
@@ -34,9 +37,11 @@ function Main() {
     } else {
       setResultText('So bạn đoán lớn quá rồi');
     }
+    setNumberOfGuess(numberOfGuess + 1); //setState là hàm bất đồng bộ.
   };
   const changeInput = (e) => {
-    setInputValue(e.target.value ? parseInt(e.target.value) : null);
+    console.log(e);
+    setInputValue(e.target.value ? parseInt(e.target.value) : '');
   };
   return (
     <div className='main'>
@@ -52,19 +57,30 @@ function Main() {
       <Row className='mt-2'>Số lần đoán của bạn là: {numberOfGuess} </Row>
       <Row>
         <Col xs={6} xl={3}>
-          <Form.Control
-            onChange={changeInput} // sẽ gọi đến mỗi khi nhập vào ô input
+          {/* xử lý dữ liệu liên quan đến form - các ô input  */}
+          <input
+            className='inputNumber'
+            onChange={changeInput} // sẽ gọi đến mỗi khi nhập vào ô input - là 1 callback function
             value={inputValue}
             type='number'
             placeholder='Enter number'
           />
         </Col>
         <Col xs={6} xl={3}>
-          <Button onClick={guess}>Guess</Button>
+          <button className='btn-guess' onClick={guess}>
+            Guess
+          </button>
         </Col>
       </Row>
       <Row>
-        <p className='mt-2'>{resultText}</p>
+        <p
+          onClick={() => {
+            alert('click vào thẻ p');
+          }}
+          className='mt-2'
+        >
+          {resultText}
+        </p>
       </Row>
     </div>
   );
