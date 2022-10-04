@@ -8,10 +8,13 @@ import {ErrorPage} from './ErrorPage';
 import {Detail} from './detailPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ResponsiveExample from './Responsive';
+import store from './app/store';
+import {Provider} from 'react-redux';
+import Product from './feature/Product';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Product />,
     errorElement: <ErrorPage />,
   },
   {
@@ -27,7 +30,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('test'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </React.StrictMode>,
 );
 
