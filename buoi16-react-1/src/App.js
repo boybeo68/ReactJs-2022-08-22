@@ -2,13 +2,16 @@ import React from 'react';
 import Footer from './components/Footer';
 import Main from './components/Main';
 import Menu from './components/Menu';
+
 import './App.css';
+import {Button, Container, Form} from 'react-bootstrap';
 export const App = () => {
   return (
     <div>
-      <Menu />
-      <Main />
-      <Footer />
+      <Container>
+        <Menu></Menu>
+        <Main />
+      </Container>
     </div>
   );
 };
