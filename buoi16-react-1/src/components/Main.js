@@ -5,11 +5,35 @@ import {Form, Button, Row, Col} from 'react-bootstrap';
 function Main() {
   const [numberOfGuess, setNumberOfGuess] = useState(0);
   const [inputValue, setInputValue] = useState(null);
+  const [resultText, setResultText] = useState('');
+  const [randomNumber, setRanDomNumber] = useState(
+    Math.floor(Math.random() * 100 + 1),
+  );
   const resetGame = () => {
     setNumberOfGuess(0);
+    setInputValue(0);
+    setRanDomNumber(Math.floor(Math.random() * 100 + 1));
+    setResultText('');
   };
   const guess = () => {
-    setNumberOfGuess(numberOfGuess + 1);
+    setNumberOfGuess(numberOfGuess + 1); //setState là hàm bất đồng bộ.
+    console.log(numberOfGuess);
+    if (numberOfGuess > 6) {
+      setResultText('Bạn thua rồi');
+      resetGame();
+      return;
+    }
+    if (inputValue === randomNumber) {
+      setResultText('Bạn đoán đúng rồi ');
+      setNumberOfGuess(0);
+      setInputValue(0);
+      setRanDomNumber(Math.floor(Math.random() * 100 + 1));
+      //   resetGame();
+    } else if (inputValue < randomNumber) {
+      setResultText('Số bạn đoán nhỏ quá rồi');
+    } else {
+      setResultText('So bạn đoán lớn quá rồi');
+    }
   };
   const changeInput = (e) => {
     setInputValue(e.target.value ? parseInt(e.target.value) : null);
@@ -18,14 +42,16 @@ function Main() {
     <div className='main'>
       <Row>
         {' '}
-        <Button onClick={resetGame} variant='success'>
-          New game
-        </Button>
+        <Col xm={3}>
+          <Button onClick={resetGame} variant='success'>
+            New game
+          </Button>
+          {randomNumber}
+        </Col>
       </Row>
-      <Row>Số lần đoán của bạn là: {numberOfGuess} </Row>
-      <h3>{inputValue}</h3>
+      <Row className='mt-2'>Số lần đoán của bạn là: {numberOfGuess} </Row>
       <Row>
-        <Col>
+        <Col xs={6} xl={3}>
           <Form.Control
             onChange={changeInput} // sẽ gọi đến mỗi khi nhập vào ô input
             value={inputValue}
@@ -33,12 +59,12 @@ function Main() {
             placeholder='Enter number'
           />
         </Col>
-        <Col>
-          <Button onClick={guess}>Check</Button>
+        <Col xs={6} xl={3}>
+          <Button onClick={guess}>Guess</Button>
         </Col>
       </Row>
       <Row>
-        <p>Số lớn quá</p>
+        <p className='mt-2'>{resultText}</p>
       </Row>
     </div>
   );
