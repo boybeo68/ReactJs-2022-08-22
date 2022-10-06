@@ -1,31 +1,46 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 // data và render của react.
-// let number = 20;
+let numberT = 20;
 function Main() {
   // let numberOfGuess = 0
   // setNumberOfGuess(numberOfGuess + 10) => numberOfGuess = numberOfGuess + 10
+  // console.log('render');
+  // ush : viết tắt cho useState
+  // useEffect(() => {
+
+  //   return cleanUp = () => {
+
+  //   }
+  // }, []);
+
   const [numberOfGuess, setNumberOfGuess] = useState(0);
 
   const [inputValue, setInputValue] = useState(0);
   const [resultText, setResultText] = useState('');
-  const [randomNumber, setRanDomNumber] = useState(
-    Math.floor(Math.random() * 100 + 1),
-  );
+  const [randomNumber, setRanDomNumber] = useState(null);
   const resetGame = () => {
     setNumberOfGuess(0);
     setInputValue(0);
     setRanDomNumber(Math.floor(Math.random() * 100 + 1));
     setResultText('');
   };
-  const guess = () => {
-    // đăng sau await phải là 1 promise
-    console.log(numberOfGuess);
-    if (numberOfGuess > 6) {
+
+  useEffect(() => {
+    console.log('Main mouting');
+    setRanDomNumber(Math.floor(Math.random() * 100 + 1));
+  }, []);
+
+  useEffect(() => {
+    if (numberOfGuess > 7) {
       setResultText('Bạn thua rồi');
       resetGame();
-      return;
     }
+  }, [numberOfGuess]);
+
+  const guess = () => {
+    // đăng sau await phải là 1 promise
+    setNumberOfGuess(numberOfGuess + 1); //setState là hàm bất đồng bộ.
     if (inputValue === randomNumber) {
       setResultText('Bạn đoán đúng rồi ');
       setNumberOfGuess(0);
@@ -37,12 +52,11 @@ function Main() {
     } else {
       setResultText('So bạn đoán lớn quá rồi');
     }
-    setNumberOfGuess(numberOfGuess + 1); //setState là hàm bất đồng bộ.
   };
   const changeInput = (e) => {
-    console.log(e);
     setInputValue(e.target.value ? parseInt(e.target.value) : '');
   };
+
   return (
     <div className='main'>
       <Row>
@@ -51,7 +65,6 @@ function Main() {
           <Button onClick={resetGame} variant='success'>
             New game
           </Button>
-          {randomNumber}
         </Col>
       </Row>
       <Row className='mt-2'>Số lần đoán của bạn là: {numberOfGuess} </Row>
@@ -69,6 +82,15 @@ function Main() {
         <Col xs={6} xl={3}>
           <button className='btn-guess' onClick={guess}>
             Guess
+          </button>
+          <button
+            className='btn-guess'
+            onClick={() => {
+              console.log(numberT);
+              numberT = numberT + 1;
+            }}
+          >
+            Test button
           </button>
         </Col>
       </Row>

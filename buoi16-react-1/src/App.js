@@ -1,16 +1,15 @@
-import React from 'react';
-import Footer from './components/Footer';
-import Main from './components/Main';
-import {Menu} from './components/Menu';
+import React, {useEffect} from 'react';
 
 import './App.css';
-import {Button, Container, Form} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
+import RandomNumber from './randomNumberProject/RandomNumber';
+import TodoApp from './todoApp/TodoApp';
 export const App = () => {
   return (
     <div>
       <Container>
-        <Menu></Menu>
-        <Main />
+        {/* <RandomNumber /> */}
+        <TodoApp />
       </Container>
     </div>
   );
