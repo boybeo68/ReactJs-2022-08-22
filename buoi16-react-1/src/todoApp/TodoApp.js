@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from 'react';
+import {Button} from 'react-bootstrap';
 import styles from './css/Todo.module.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTrashCan} from '@fortawesome/free-solid-svg-icons';
 const shortid = require('shortid');
+const FILTER = {
+  ALL: 'ALL',
+  COMPLETE: 'COMPLETE',
+};
 export default function TodoApp() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isEdit, setIsEdit] = useState(null);
   const [textEdit, setTextEdit] = useState('');
+  const [filter, setfilter] = useState(FILTER.ALL);
   // state có rule là không thay đổi trực tiếp.
   //   khi thay đổi dữ liệu liên quan đến object => clone ra rồi xử lý
   const addTodo = () => {
@@ -63,6 +71,10 @@ export default function TodoApp() {
     }
   };
 
+  const filterTodos = (type) => {
+    setfilter(type);
+  };
+
   return (
     <div className='main'>
       <div className='header'>
@@ -86,60 +98,79 @@ export default function TodoApp() {
         />
         <button onClick={addTodo}>Add todo</button>
         <ul>
-          {todos.map((item, index) => {
-            return (
-              <li className={styles.todoLine} key={item.id}>
-                <input
-                  checked={item.isCheck}
-                  onChange={() => checkDone(item.id, index, item)}
-                  type={'checkbox'}
-                />
-                {isEdit === item.id ? (
+          {todos
+            .filter((e, i) => {
+              if (filter === FILTER.ALL) {
+                return true;
+              } else {
+                return e.isCheck === true;
+              }
+            })
+            .map((item, index) => {
+              return (
+                <li className={styles.todoLine} key={item.id}>
                   <input
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        setIsEdit(null);
-                        editName(index, item);
-                      }
-                    }}
-                    onChange={(e) => {
-                      setTextEdit(e.target.value);
-                    }}
-                    value={textEdit}
-                    type='text'
-                    name=''
-                    id=''
+                    checked={item.isCheck}
+                    onChange={() => checkDone(item.id, index, item)}
+                    type={'checkbox'}
                   />
-                ) : (
+                  {isEdit === item.id ? (
+                    <input
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          setIsEdit(null);
+                          editName(index, item);
+                        }
+                      }}
+                      onChange={(e) => {
+                        setTextEdit(e.target.value);
+                      }}
+                      value={textEdit}
+                      type='text'
+                      name=''
+                      id=''
+                    />
+                  ) : (
+                    <span
+                      //state style
+                      className={renderClassName(item.isCheck)}
+                      onDoubleClick={() => {
+                        setIsEdit(item.id);
+                        setTextEdit(item.name);
+                      }}
+                    >
+                      {' '}
+                      {item.name}{' '}
+                    </span>
+                  )}
                   <span
-                    //state style
-                    className={renderClassName(item.isCheck)}
-                    onDoubleClick={() => {
-                      setIsEdit(item.id);
-                      setTextEdit(item.name);
+                    onClick={() => {
+                      deleteTodo(item.id);
+                    }}
+                    style={{
+                      marginLeft: '20px',
+                      opacity: 0.5,
+                      cursor: 'pointer',
                     }}
                   >
-                    {' '}
-                    {item.name}{' '}
-                  </span>
-                )}
-                <span
-                  onClick={() => {
-                    deleteTodo(item.id);
-                  }}
-                  style={{marginLeft: '20px', opacity: 0.5, cursor: 'pointer'}}
-                >
-                  delete
-                </span>{' '}
-              </li>
-            );
-          })}
+                    <FontAwesomeIcon color='red' icon={faTrashCan} />
+                  </span>{' '}
+                </li>
+              );
+            })}
         </ul>
       </div>
       <div className='fotter'>
         <p>
           <span>{todos.length} items</span>
         </p>
+        <Button
+          onClick={() => filterTodos(FILTER.ALL)}
+          className={styles.button}
+        >
+          All
+        </Button>
+        <Button onClick={() => filterTodos(FILTER.COMPLETE)}>Complete</Button>
       </div>
     </div>
   );
