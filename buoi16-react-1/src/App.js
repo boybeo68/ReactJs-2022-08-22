@@ -4,12 +4,14 @@ import './App.css';
 import {Container} from 'react-bootstrap';
 import RandomNumber from './randomNumberProject/RandomNumber';
 import TodoApp from './todoApp/TodoApp';
+import ToDoItem from './todoApp/components/ToDoItem';
 export const App = () => {
   return (
     <div>
       <Container>
         {/* <RandomNumber /> */}
         <TodoApp />
+        <ToDoItem/>
       </Container>
     </div>
   );
