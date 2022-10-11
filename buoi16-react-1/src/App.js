@@ -11,7 +11,6 @@ export const App = () => {
       <Container>
         {/* <RandomNumber /> */}
         <TodoApp />
-        <ToDoItem/>
       </Container>
     </div>
   );
