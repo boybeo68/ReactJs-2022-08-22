@@ -4,11 +4,53 @@ import './index.css';
 import {App} from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
-
+import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
+import TodoApp from './todoApp/TodoApp';
+import RandomNumber from './randomNumberProject/RandomNumber';
+import LearnRouter from './shopApp/components/LearnRouter';
+import ShopApp from './shopApp/ShopApp';
+import store from './redux/store';
+import {Provider} from 'react-redux';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+  },
+  {
+    path: '/todo',
+    element: <TodoApp />,
+  },
+  {
+    path: '/random',
+    element: <RandomNumber />,
+  },
+  {
+    path: '/shopApp',
+    element: <ShopApp />,
+  },
+  {
+    path: '/learnRouter',
+    element: <LearnRouter />,
+  },
+  {
+    path: '/products',
+    element: <div>List products</div>,
+  },
+  {
+    path: '/cart',
+    element: <div>Cart</div>,
+  },
+  {
+    path: '/favourite',
+    element: <div>Favourite</div>,
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
 
