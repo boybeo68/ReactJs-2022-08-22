@@ -8,7 +8,7 @@ const FILTER = {
   ALL: 'ALL',
   COMPLETE: 'COMPLETE',
 };
-export default function TodoApp() {
+export default function TodoApp(props) {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isEdit, setIsEdit] = useState(null);
@@ -73,12 +73,15 @@ export default function TodoApp() {
 
   const filterTodos = (type) => {
     setfilter(type);
+
+    props.dataChild(todos);
   };
 
   return (
     <div className='main'>
       <div className='header'>
         <h1>Todos</h1>
+        <h2>{props.data}</h2>
       </div>
       <div className='body'>
         <input
@@ -194,3 +197,13 @@ export default function TodoApp() {
 //   },
 //   ...todos,
 // ]);
+
+// Truyền dữ liệu từ cha -> con
+// đẩy dữ liệu từ con -> cha
+
+// btvn: hoàn thiện todoApp
+// - tách todoApp thành các component
+// + TodoInput.js
+// + TodoList.js
+//   + TodoItem.js
+// + Footer.js
