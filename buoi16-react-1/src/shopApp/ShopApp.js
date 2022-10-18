@@ -3,14 +3,16 @@ import {useSelector, useDispatch} from 'react-redux';
 import {decrementCount, increeCount} from '../redux/counterRedux/counterSlice';
 
 export default function ShopApp() {
-  const counter = useSelector((state) => state.counter.value);
+  const counter = useSelector((state) => state.counterReducer);
   const dispatch = useDispatch();
   return (
     <div>
       <h1>Shop App</h1>
-      <h1>{counter}</h1>
+      <h1>{counter.value}</h1>
       <button onClick={() => dispatch(increeCount(5))}>incree count</button>
-      <button onClick={() => dispatch(decrementCount())}>incree count</button>
+      <button onClick={() => dispatch(decrementCount())}>
+        decrement count
+      </button>
     </div>
   );
 }

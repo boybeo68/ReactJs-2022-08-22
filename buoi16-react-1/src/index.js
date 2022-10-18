@@ -11,6 +11,7 @@ import LearnRouter from './shopApp/components/LearnRouter';
 import ShopApp from './shopApp/ShopApp';
 import store from './redux/store';
 import {Provider} from 'react-redux';
+import ProductList from './shopApp/pages/ProductList';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/shopApp',
-    element: <ShopApp />,
+    element: <ProductList />,
   },
   {
     path: '/learnRouter',
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/products',
-    element: <div>List products</div>,
+    element: <ProductList />,
   },
   {
     path: '/cart',
