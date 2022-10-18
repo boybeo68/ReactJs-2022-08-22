@@ -27,7 +27,7 @@ const initialState = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident et, debitis fuga aliquam laudantium iste placeat eveniet? Alias, non!',
     price: 60000000,
-    isFavourite: false,
+    isFavourite: true,
     image:
       'https://i.picsum.photos/id/908/900/900.jpg?hmac=qAFo44QVaMI0_ouSCjxcqK-QUL_eqQFPtmnqp0kfhDE',
   },
@@ -46,10 +46,17 @@ const initialState = [
 const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    favouriteProduct: (state, action) => {
+      const id = action.payload;
+      const itemIndexEdit = state.findIndex((i) => i.id === id);
+      const item = state[itemIndexEdit];
+      item.isFavourite = !item.isFavourite;
+      state.splice(itemIndexEdit, 1, item);
+    },
+  },
 });
 
-// export const {} = productSlice.actions;
+export const {favouriteProduct} = productSlice.actions;
 
 export default productSlice.reducer;
-

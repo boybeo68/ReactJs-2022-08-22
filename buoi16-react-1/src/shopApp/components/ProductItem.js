@@ -1,15 +1,32 @@
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import {currencyFormat} from '../ultils/constant';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import styles from '../css/Product.module.css';
+import {useDispatch} from 'react-redux';
+import {favouriteProduct} from '../../redux/productsRedux/productSlice';
 function ProductItem(props) {
+  const dispatch = useDispatch();
   return (
     <Card style={{width: '18rem'}}>
       <Card.Img variant='top' src={props.item.image} />
       <Card.Body>
         <Card.Title>{props.item.title}</Card.Title>
-        <Card.Text>{props.item.price}</Card.Text>
+        <Card.Subtitle>{currencyFormat(props.item.price)}</Card.Subtitle>
         <Card.Text>{props.item.description}</Card.Text>
         <Button variant='primary'>Go product detail</Button>
+        <span
+          onClick={() => {
+            dispatch(favouriteProduct(props.item.id));
+          }}
+          className={styles.icon}
+        >
+          <FontAwesomeIcon
+            icon={faHeart}
+            color={props.item.isFavourite ? 'red' : 'black'}
+          />
+        </span>
       </Card.Body>
     </Card>
   );

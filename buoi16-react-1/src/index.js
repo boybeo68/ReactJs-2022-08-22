@@ -12,6 +12,7 @@ import ShopApp from './shopApp/ShopApp';
 import store from './redux/store';
 import {Provider} from 'react-redux';
 import ProductList from './shopApp/pages/ProductList';
+import FavouriteList from './shopApp/pages/FavouriteList';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/favourite',
-    element: <div>Favourite</div>,
+    element: <FavouriteList />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
