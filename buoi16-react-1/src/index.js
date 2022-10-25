@@ -13,6 +13,8 @@ import store from './redux/store';
 import {Provider} from 'react-redux';
 import ProductList from './shopApp/pages/ProductList';
 import FavouriteList from './shopApp/pages/FavouriteList';
+import CartPage from './shopApp/pages/cartPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/cart',
-    element: <div>Cart</div>,
+    element: <CartPage />,
   },
   {
     path: '/favourite',

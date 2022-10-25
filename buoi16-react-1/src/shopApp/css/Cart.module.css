@@ -1,0 +1,15 @@
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    background-color: bisque;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.title {
+    font-weight: bold;
+    font-size: large;
+}
+.quantity {
+    font-weight: normal;
+    font-size: 13;
+}

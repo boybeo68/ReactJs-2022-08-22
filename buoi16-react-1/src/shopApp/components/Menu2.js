@@ -30,9 +30,11 @@ function Menu() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Nav.Link href='#link'>
-          <FontAwesomeIcon icon={faCartShopping} />
-          <span>{getTotalItem}</span>
+        <Nav.Link>
+          <Link to={'/cart'}>
+            <FontAwesomeIcon icon={faCartShopping} />
+            <span>{getTotalItem}</span>
+          </Link>
         </Nav.Link>
       </Container>
     </Navbar>

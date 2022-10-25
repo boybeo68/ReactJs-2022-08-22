@@ -6,6 +6,7 @@ import {faHeart, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import styles from '../css/Product.module.css';
 import {useDispatch} from 'react-redux';
 import {favouriteProduct} from '../../redux/shopAppRedux/productSlice';
+import {addCart} from '../../redux/shopAppRedux/cartSlice';
 function ProductItem(props) {
   const dispatch = useDispatch();
   return (
@@ -31,7 +32,7 @@ function ProductItem(props) {
         <span
           style={{cursor: 'pointer'}}
           onClick={() => {
-            // dispatch(favouriteProduct(props.item.id));
+            dispatch(addCart({product: props.item}));
           }}
           className={styles.icon}
         >
