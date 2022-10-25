@@ -6,15 +6,16 @@ import styles from '../css/Cart.module.css';
 import {currencyFormat} from '../ultils/constant';
 export default function CartPage() {
   const cartReducer = useSelector((state) => state.cartReducer);
-  const totalCart = cartReducer.productList.reduce((a, b) => {
+  const totalCart = cartReducer?.productList?.reduce((a, b) => {
     return a + b.quantity * b.price;
   }, 0);
+
   return (
     <Container>
       <div>
         <Menu />
         <ul>
-          {cartReducer.productList.map((item, index) => {
+          {cartReducer?.productList?.map((item, index) => {
             return (
               <li className={styles.cartItem} key={index + 'cart'}>
                 <p className={styles.title}>{item.title}</p>

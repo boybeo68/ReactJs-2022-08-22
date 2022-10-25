@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 function Menu() {
   const cartData = useSelector((state) => state.cartReducer);
 
-  const getTotalItem = cartData.productList.reduce((a, b) => {
+  const getTotalItem = cartData?.productList?.reduce((a, b) => {
     return a + b.quantity;
   }, 0);
 
