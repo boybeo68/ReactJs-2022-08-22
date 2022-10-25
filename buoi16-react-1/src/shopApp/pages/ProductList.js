@@ -63,3 +63,13 @@ export default function ProductList() {
     </div>
   );
 }
+
+// trước đây: Chưa có api.
+
+// phát triển web: php, nodejs, java, C#: UI (web) -> DB -> UI (web)
+// => mobile: UI-mobile  -> server riêng để chạy cho mobile (nodejs, java, ...) -> UI mobile
+// => API: application platform interface
+
+// DB -> xuất api : phương thức để truy câp, tương tác với dữ liệu từ dB
+// api: web truy cập vào để lấy dữ liệu
+// api : mobile cũng có thể truy cập vào để lấy dữ liệu
