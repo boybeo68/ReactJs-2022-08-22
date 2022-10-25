@@ -7,13 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 import TodoApp from './todoApp/TodoApp';
 import RandomNumber from './randomNumberProject/RandomNumber';
-import LearnRouter from './shopApp/components/LearnRouter';
 import ShopApp from './shopApp/ShopApp';
 import store from './redux/store';
 import {Provider} from 'react-redux';
 import ProductList from './shopApp/pages/ProductList';
 import FavouriteList from './shopApp/pages/FavouriteList';
 import CartPage from './shopApp/pages/cartPage';
+import ProductDetailPage from './shopApp/pages/ProductDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -32,13 +32,14 @@ const router = createBrowserRouter([
     path: '/shopApp',
     element: <ProductList />,
   },
-  {
-    path: '/learnRouter',
-    element: <LearnRouter />,
-  },
+
   {
     path: '/products',
     element: <ProductList />,
+  },
+  {
+    path: '/products/:proudctId',
+    element: <ProductDetailPage />,
   },
   {
     path: '/cart',

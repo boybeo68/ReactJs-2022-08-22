@@ -7,8 +7,14 @@ import styles from '../css/Product.module.css';
 import {useDispatch} from 'react-redux';
 import {favouriteProduct} from '../../redux/shopAppRedux/productSlice';
 import {addCart} from '../../redux/shopAppRedux/cartSlice';
+import {useNavigate} from 'react-router-dom';
+
 function ProductItem(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const goToDetail = (id) => {
+    navigate('/products/' + id);
+  };
   return (
     <Card style={{width: '18rem'}}>
       <Card.Img variant='top' src={props.item.image} />
@@ -16,7 +22,9 @@ function ProductItem(props) {
         <Card.Title>{props.item.title}</Card.Title>
         <Card.Subtitle>{currencyFormat(props.item.price)}</Card.Subtitle>
         <Card.Text>{props.item.description}</Card.Text>
-        <Button variant='primary'>Go product detail</Button>
+        <Button onClick={() => goToDetail(props.item.id)} variant='primary'>
+          Go product detail
+        </Button>
         <span
           style={{cursor: 'pointer'}}
           onClick={() => {

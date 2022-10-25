@@ -4,3 +4,8 @@ export const currencyFormat = (num) => {
   }
   return '';
 };
+
+export const SORT_BY = {
+  asc: 'asc',
+  desc: 'desc',
+};
