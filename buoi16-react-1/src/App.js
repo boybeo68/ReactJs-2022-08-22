@@ -7,6 +7,7 @@ export const App = () => {
     {name: 'Random number project', path: '/random'},
     {name: 'Todo project', path: '/todo'},
     {name: 'Shop app', path: '/shopApp'},
+    {name: 'Todo Api', path: '/todoApi'},
   ]);
 
   const navigate = useNavigate();

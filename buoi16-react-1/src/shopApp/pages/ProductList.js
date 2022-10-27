@@ -73,3 +73,12 @@ export default function ProductList() {
 // DB -> xuất api : phương thức để truy câp, tương tác với dữ liệu từ dB
 // api: web truy cập vào để lấy dữ liệu
 // api : mobile cũng có thể truy cập vào để lấy dữ liệu
+// open api: Facebook Api, Google Api, ....
+// điểm a -> điểm b
+// post. request: location (lat, long )A , B(lat, long) => response: list các toạ độ ở giữa  => nối vào
+// thời tiết: nhập ha noi => nhiệt độ, nắng mưa...
+
+// API được viết xong rồi. FE chỉ việc tương tác với nó
+// BE và FE start cùng lúc. => FE sẽ không có api thật để ghép vào lấy data được.
+// => mock api. => FE sẽ tự giả lập 1 api để có kết quả trả về. sau đó hiển thị lên giao diện.
+// Có api thật của BE: Đổi url, đổi tên trường dữ liệu là được.

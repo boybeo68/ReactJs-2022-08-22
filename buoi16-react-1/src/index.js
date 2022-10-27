@@ -14,6 +14,7 @@ import ProductList from './shopApp/pages/ProductList';
 import FavouriteList from './shopApp/pages/FavouriteList';
 import CartPage from './shopApp/pages/cartPage';
 import ProductDetailPage from './shopApp/pages/ProductDetailPage';
+import TodoAppApi from './todoAppAPI/TodoApp';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/todo',
     element: <TodoApp />,
+  },
+  {
+    path: '/todoApi',
+    element: <TodoAppApi />,
   },
   {
     path: '/random',
