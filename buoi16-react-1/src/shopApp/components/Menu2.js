@@ -28,6 +28,9 @@ function Menu() {
             <Nav.Link>
               <Link to='/favourite'>Favourite</Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link to='/add-product'>Add product</Link>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Nav.Link>

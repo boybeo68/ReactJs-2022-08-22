@@ -15,6 +15,7 @@ import FavouriteList from './shopApp/pages/FavouriteList';
 import CartPage from './shopApp/pages/cartPage';
 import ProductDetailPage from './shopApp/pages/ProductDetailPage';
 import TodoAppApi from './todoAppAPI/TodoApp';
+import AddProdct from './shopApp/pages/AddProdct';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: '/favourite',
     element: <FavouriteList />,
+  },
+  {
+    path: '/add-product',
+    element: <AddProdct />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
