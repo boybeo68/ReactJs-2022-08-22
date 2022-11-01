@@ -17,10 +17,18 @@ export default function TodoAppApi(props) {
   const addTodo = async (dataInput) => {
     setisLoading(true);
     try {
-      await axios.post(URL, {
-        name: dataInput,
-        isCheck: false,
-      });
+      await axios.post(
+        URL,
+        {
+          name: dataInput,
+          isCheck: false,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
       getListTodo();
     } catch (error) {}
   };

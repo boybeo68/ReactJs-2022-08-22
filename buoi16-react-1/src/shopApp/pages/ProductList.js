@@ -1,30 +1,46 @@
 import React, {useState, useEffect} from 'react';
 import Menu from '../components/Menu2';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import ProductItem from '../components/ProductItem';
 import styles from '../css/Product.module.css';
 import {SORT_BY} from '../ultils/constant';
 import {createSearchParams, useNavigate} from 'react-router-dom';
+import {customAxios} from '../config/api';
+import {addListProduct} from '../../redux/shopAppRedux/productSlice';
 export default function ProductList() {
   const [sortBy, setsortBy] = useState(null); //desc
   const [productState, setproductState] = useState(null);
   const proudctList = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+
   const queryParams = new URLSearchParams(window.location.search);
+
   const query = queryParams.get('price');
   useEffect(() => {
-    setproductState(proudctList);
+    // setproductState(proudctList);
+    getProductApi();
   }, []);
 
-  useEffect(() => {
-    if (query && productState) {
-      const cloneState = [...productState];
+  // useEffect(() => {
+  //   if (query && productState) {
+  //     const cloneState = [...productState];
 
-      cloneState.sort((a, b) =>
-        query === SORT_BY.asc ? a.price - b.price : b.price - a.price,
-      );
-      setproductState(cloneState);
+  //     cloneState.sort((a, b) =>
+  //       query === SORT_BY.asc ? a.price - b.price : b.price - a.price,
+  //     );
+  //     setproductState(cloneState);
+  //   }
+  // }, [query]);
+
+  const getProductApi = async () => {
+    try {
+      const res = await customAxios.get('/products.json');
+      dispatch(addListProduct(res.data));
+      // console.log('list', proudctList);
+    } catch (error) {
+      console.log(error);
     }
-  }, [query]);
+  };
 
   const navigate = useNavigate();
   const changeSort = (sort) => {
@@ -55,8 +71,8 @@ export default function ProductList() {
         </span>
       </div>
       <div className={styles.wrapProductList}>
-        {productState &&
-          productState?.map((item) => {
+        {proudctList &&
+          proudctList?.map((item) => {
             return <ProductItem key={item.id} item={item} />;
           })}
       </div>
