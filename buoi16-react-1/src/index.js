@@ -17,6 +17,7 @@ import ProductDetailPage from './shopApp/pages/ProductDetailPage';
 import TodoAppApi from './todoAppAPI/TodoApp';
 import AddProdct from './shopApp/pages/AddProdct';
 import Login from './shopApp/pages/Login';
+import ProtectRouter from './shopApp/components/ProtectRouter';
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/cart',
-    element: <CartPage />,
+    element: (
+      <ProtectRouter>
+        <CartPage />
+      </ProtectRouter>
+    ),
   },
   {
     path: '/favourite',
@@ -58,7 +63,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/add-product',
-    element: <AddProdct />,
+    element: (
+      <ProtectRouter>
+        <AddProdct />
+      </ProtectRouter>
+    ),
   },
   {
     path: '/login',

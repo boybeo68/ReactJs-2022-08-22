@@ -3,6 +3,8 @@ import {Container, Button} from 'react-bootstrap';
 import Menu from '../components/Menu2';
 import {useSelector, useDispatch} from 'react-redux';
 import {login, logout} from '../../redux/shopAppRedux/userSlice';
+import Parent from '../components/Parent';
+import Child from '../components/Child';
 
 export default function Login() {
   const dispatch = useDispatch();
