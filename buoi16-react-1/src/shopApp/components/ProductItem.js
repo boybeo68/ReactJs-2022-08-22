@@ -21,14 +21,16 @@ function ProductItem(props) {
       <Card.Body>
         <Card.Title>{props.item.title}</Card.Title>
         <Card.Subtitle>{currencyFormat(props.item.price)}</Card.Subtitle>
-        <Card.Text>{props.item.description}</Card.Text>
-        <Button onClick={() => goToDetail(props.item.id)} variant='primary'>
+        <Card.Text className={styles.maxHeight}>
+          {props.item.description}
+        </Card.Text>
+        <Button onClick={() => goToDetail(props.id)} variant='primary'>
           Go product detail
         </Button>
         <span
           style={{cursor: 'pointer'}}
           onClick={() => {
-            dispatch(favouriteProduct(props.item.id));
+            dispatch(favouriteProduct(props.id));
           }}
           className={styles.icon}
         >

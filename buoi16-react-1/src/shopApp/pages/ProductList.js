@@ -9,7 +9,6 @@ import {customAxios} from '../config/api';
 import {addListProduct} from '../../redux/shopAppRedux/productSlice';
 export default function ProductList() {
   const [sortBy, setsortBy] = useState(null); //desc
-  const [productState, setproductState] = useState(null);
   const proudctList = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
 
@@ -35,8 +34,8 @@ export default function ProductList() {
   const getProductApi = async () => {
     try {
       const res = await customAxios.get('/products.json');
+      console.log(Object.keys(res.data));
       dispatch(addListProduct(res.data));
-      // console.log('list', proudctList);
     } catch (error) {
       console.log(error);
     }
@@ -72,8 +71,8 @@ export default function ProductList() {
       </div>
       <div className={styles.wrapProductList}>
         {proudctList &&
-          proudctList?.map((item) => {
-            return <ProductItem key={item.id} item={item} />;
+          Object.keys(proudctList)?.map((key) => {
+            return <ProductItem key={key} item={proudctList[key]} id={key} />;
           })}
       </div>
     </div>

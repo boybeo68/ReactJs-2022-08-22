@@ -18,3 +18,7 @@
     margin-right: 10px;
     cursor: pointer;
 }
+.maxHeight{
+    height: 100px;
+    overflow-y: scroll;
+}
