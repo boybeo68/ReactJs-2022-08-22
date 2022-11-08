@@ -8,13 +8,11 @@ import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import {useSelector} from 'react-redux';
 function Menu() {
   const cartData = useSelector((state) => state.cartReducer);
+  const token = useSelector((state) => state.userReducer.token);
 
   const getTotalItem = cartData?.productList?.reduce((a, b) => {
     return a + b.quantity;
   }, 0);
-
-  console.log(cartData.productList);
-  console.log(getTotalItem);
   return (
     <Navbar bg='light' expand='lg'>
       <Container>
@@ -22,23 +20,24 @@ function Menu() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
-            <Nav.Link>
-              <Link to='/products'>Home</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to='/favourite'>Favourite</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to='/add-product'>Add product</Link>
-            </Nav.Link>
+            <Link className='menu-link' to='/products'>
+              Home
+            </Link>
+            <Link className='menu-link' to='/favourite'>
+              Favourite
+            </Link>
+            <Link className='menu-link' to='/add-product'>
+              Add product
+            </Link>
+            <Link className='menu-link' to='/login'>
+              {token != null ? 'Logout' : 'Login'}
+            </Link>
           </Nav>
         </Navbar.Collapse>
-        <Nav.Link>
-          <Link to={'/cart'}>
-            <FontAwesomeIcon icon={faCartShopping} />
-            <span>{getTotalItem}</span>
-          </Link>
-        </Nav.Link>
+        <Link to={'/cart'}>
+          <FontAwesomeIcon icon={faCartShopping} />
+          <span>{getTotalItem}</span>
+        </Link>
       </Container>
     </Navbar>
   );

@@ -6,7 +6,7 @@ import Menu from '../components/Menu2';
 import {customAxios} from '../config/api';
 export default function ProductDetailPage() {
   const params = useParams();
-  const productId = params.proudctId;
+  const productId = params.productId;
   const [detailProduct, setdetailProduct] = useState(null);
   useEffect(() => {
     getDetail();
@@ -20,6 +20,7 @@ export default function ProductDetailPage() {
       console.log(error);
     }
   };
+
   return (
     <Container>
       <Menu></Menu>

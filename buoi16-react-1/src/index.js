@@ -16,6 +16,7 @@ import CartPage from './shopApp/pages/cartPage';
 import ProductDetailPage from './shopApp/pages/ProductDetailPage';
 import TodoAppApi from './todoAppAPI/TodoApp';
 import AddProdct from './shopApp/pages/AddProdct';
+import Login from './shopApp/pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
     element: <ProductList />,
   },
   {
-    path: '/products/:proudctId',
+    path: '/products/:productId',
     element: <ProductDetailPage />,
   },
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: '/add-product',
     element: <AddProdct />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -73,3 +78,8 @@ root.render(
 reportWebVitals();
 // random số.
 // chia các component. 1 thành phần UI có thể được gọi là 1 component
+
+// Authen
+// - Client -> (email, pass) -> server
+// - Server -> create Token -> Client => Client sẽ phải lưu token lại để sử dụng ( localStorage và redux)
+// - Những request cần bảo mật thì client sẽ gửi data kèm tokent lên server
