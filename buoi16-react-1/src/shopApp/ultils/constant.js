@@ -9,3 +9,5 @@ export const SORT_BY = {
   asc: 'asc',
   desc: 'desc',
 };
+
+export const API_KEY = 'AIzaSyBvWZbtsBfP5YtRgK75Rh5JHGlo656-_oo';

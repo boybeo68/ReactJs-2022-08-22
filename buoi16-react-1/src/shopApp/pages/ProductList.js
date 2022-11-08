@@ -10,6 +10,7 @@ import {addListProduct} from '../../redux/shopAppRedux/productSlice';
 export default function ProductList() {
   const [sortBy, setsortBy] = useState(null); //desc
   const proudctList = useSelector((state) => state.productReducer);
+  const token = useSelector((state) => state.userReducer.token);
   const dispatch = useDispatch();
 
   const queryParams = new URLSearchParams(window.location.search);
@@ -33,7 +34,7 @@ export default function ProductList() {
 
   const getProductApi = async () => {
     try {
-      const res = await customAxios.get('/products.json');
+      const res = await customAxios.get(`/products.json?auth=${token}`);
       console.log(Object.keys(res.data));
       dispatch(addListProduct(res.data));
     } catch (error) {

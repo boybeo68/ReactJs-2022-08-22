@@ -43,7 +43,11 @@ const router = createBrowserRouter([
 
   {
     path: '/products',
-    element: <ProductList />,
+    element: (
+      <ProtectRouter>
+        <ProductList />
+      </ProtectRouter>
+    ),
   },
   {
     path: '/products/:productId',
