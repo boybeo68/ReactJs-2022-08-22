@@ -5,42 +5,20 @@ import ProductItem from '../components/ProductItem';
 import styles from '../css/Product.module.css';
 import {SORT_BY} from '../ultils/constant';
 import {createSearchParams, useNavigate} from 'react-router-dom';
-import {customAxios} from '../config/api';
-import {addListProduct} from '../../redux/shopAppRedux/productSlice';
+import {
+  getListProduct,
+  selectListProduct,
+} from '../../redux/shopAppRedux/productSlice';
 export default function ProductList() {
   const [sortBy, setsortBy] = useState(null); //desc
-  const proudctList = useSelector((state) => state.productReducer);
-  const token = useSelector((state) => state.userReducer.token);
+  const proudctList = useSelector(selectListProduct);
   const dispatch = useDispatch();
 
-  const queryParams = new URLSearchParams(window.location.search);
+  // const queryParams = new URLSearchParams(window.location.search);
 
-  const query = queryParams.get('price');
   useEffect(() => {
-    // setproductState(proudctList);
-    getProductApi();
+    dispatch(getListProduct());
   }, []);
-
-  // useEffect(() => {
-  //   if (query && productState) {
-  //     const cloneState = [...productState];
-
-  //     cloneState.sort((a, b) =>
-  //       query === SORT_BY.asc ? a.price - b.price : b.price - a.price,
-  //     );
-  //     setproductState(cloneState);
-  //   }
-  // }, [query]);
-
-  const getProductApi = async () => {
-    try {
-      const res = await customAxios.get(`/products.json?auth=${token}`);
-      console.log(Object.keys(res.data));
-      dispatch(addListProduct(res.data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const navigate = useNavigate();
   const changeSort = (sort) => {
@@ -71,10 +49,17 @@ export default function ProductList() {
         </span>
       </div>
       <div className={styles.wrapProductList}>
-        {proudctList &&
-          Object.keys(proudctList)?.map((key) => {
-            return <ProductItem key={key} item={proudctList[key]} id={key} />;
-          })}
+        {proudctList.loading === true ? (
+          <p>Loading...</p>
+        ) : (
+          proudctList.data &&
+          Object.keys(proudctList.data)?.map((key) => {
+            return (
+              <ProductItem key={key} item={proudctList.data[key]} id={key} />
+            );
+          })
+        )}
+        {proudctList.error && <p>Có lỗi xảy ra</p>}
       </div>
     </div>
   );
