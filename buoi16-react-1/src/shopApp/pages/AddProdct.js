@@ -3,8 +3,12 @@ import Menu from '../components/Menu2';
 import {Form, Button, Card, Container} from 'react-bootstrap';
 import {customAxios} from '../config/api';
 import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {addProduct} from '../../redux/shopAppRedux/productSlice';
+// redux pattern
 export default function AddProdct() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [imageData, setimageData] = useState('');
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -14,24 +18,20 @@ export default function AddProdct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addProducts();
-  };
-
-  const addProducts = async () => {
-    try {
-      const res = await customAxios.post('/products.json', {
+    dispatch(
+      addProduct({
         title: titleRef.current.value,
         description: descriptionRef.current.value,
         price: priceRef.current.value,
         image: imageData,
         isFavourite: false,
+      }),
+    )
+      .unwrap()
+      .then(() => {
+        navigate('/shopApp');
       });
-      navigate('/shopApp');
-    } catch (error) {
-      console.log(error);
-    }
   };
-
   return (
     <Container>
       <Menu />

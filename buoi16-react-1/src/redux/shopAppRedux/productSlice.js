@@ -18,6 +18,20 @@ export const getListProduct = createAsyncThunk(
     // thunkApi.dispatch(login('abc')); => dispatch action bất kì.
   },
 );
+export const addProduct = createAsyncThunk(
+  'products/addProduct',
+  async (arg, thunkApi) => {
+    const token = thunkApi.getState().userReducer.token;
+    const res = await customAxios.post(`/products.json?auth=${token}`, {
+      title: arg.title,
+      description: arg.description,
+      price: arg.price,
+      image: arg.image,
+      isFavourite: arg.isFavourite,
+    });
+    return res.data;
+  },
+);
 
 const productSlice = createSlice({
   name: 'products',
@@ -30,6 +44,8 @@ const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      // getlist
       .addCase(getListProduct.pending, (state, action) => {
         state.loading = true;
         state.error = false;
@@ -40,6 +56,22 @@ const productSlice = createSlice({
         state.data = products;
       })
       .addCase(getListProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+      })
+
+      // add product
+
+      .addCase(addProduct.pending, (state, action) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        // const products = action.payload;
+        state.loading = false;
+        // state.data = products;
+      })
+      .addCase(addProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = true;
       });
