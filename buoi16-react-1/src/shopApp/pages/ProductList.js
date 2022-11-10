@@ -59,7 +59,7 @@ export default function ProductList() {
             );
           })
         )}
-        {proudctList.error && <p>Có lỗi xảy ra</p>}
+        {proudctList.error && <p>{proudctList.error}</p>}
       </div>
     </div>
   );

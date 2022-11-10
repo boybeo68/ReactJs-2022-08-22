@@ -10,9 +10,15 @@ const initialState = {
 export const getListProduct = createAsyncThunk(
   'products/getList',
   async (arg, thunkApi) => {
-    const token = thunkApi.getState().userReducer.token;
-    const res = await customAxios.get(`/products.json?auth=${token}`);
-    return res.data;
+    try {
+      const token = thunkApi.getState().userReducer.token;
+      const res = await customAxios.get(`/products.json?auth=${token}`);
+      return res.data;
+    } catch (error) {
+      return {
+        error: error.response.data.error,
+      };
+    }
 
     // thunkApi.getState() => lấy dữ liệu từ store ra
     // thunkApi.dispatch(login('abc')); => dispatch action bất kì.
@@ -22,7 +28,7 @@ export const addProduct = createAsyncThunk(
   'products/addProduct',
   async (arg, thunkApi) => {
     const token = thunkApi.getState().userReducer.token;
-    const res = await customAxios.post(`/products.json?auth=${token}`, {
+    const res = await customAxios.post(`/products.json?autht=${token}`, {
       title: arg.title,
       description: arg.description,
       price: arg.price,
@@ -51,9 +57,13 @@ const productSlice = createSlice({
         state.error = false;
       })
       .addCase(getListProduct.fulfilled, (state, action) => {
-        const products = action.payload;
         state.loading = false;
-        state.data = products;
+        if (action.payload.error) {
+          state.error = action.payload.error;
+        } else {
+          const products = action.payload;
+          state.data = products;
+        }
       })
       .addCase(getListProduct.rejected, (state, action) => {
         state.loading = false;

@@ -18,7 +18,7 @@ export default function AddProdct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
+    const data = dispatch(
       addProduct({
         title: titleRef.current.value,
         description: descriptionRef.current.value,
@@ -28,9 +28,8 @@ export default function AddProdct() {
       }),
     )
       .unwrap()
-      .then(() => {
-        navigate('/shopApp');
-      });
+      .then((res) => navigate('/shopapp'))
+      .catch((e) => console.log('error data', e));
   };
   return (
     <Container>
