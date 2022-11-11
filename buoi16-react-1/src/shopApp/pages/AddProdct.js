@@ -28,7 +28,7 @@ export default function AddProdct() {
       }),
     )
       .unwrap()
-      .then((res) => navigate('/shopapp'))
+      .then((res) => navigate('/shopApp'))
       .catch((e) => console.log('error data', e));
   };
   return (

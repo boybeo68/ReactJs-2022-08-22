@@ -28,7 +28,7 @@ export const addProduct = createAsyncThunk(
   'products/addProduct',
   async (arg, thunkApi) => {
     const token = thunkApi.getState().userReducer.token;
-    const res = await customAxios.post(`/products.json?autht=${token}`, {
+    const res = await customAxios.post(`/products.json?auth=${token}`, {
       title: arg.title,
       description: arg.description,
       price: arg.price,
