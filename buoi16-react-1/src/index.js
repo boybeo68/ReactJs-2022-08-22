@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'react-chat-elements/dist/main.css';
 import './index.css';
 import {App} from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +19,7 @@ import TodoAppApi from './todoAppAPI/TodoApp';
 import AddProdct from './shopApp/pages/AddProdct';
 import Login from './shopApp/pages/Login';
 import ProtectRouter from './shopApp/components/ProtectRouter';
+import Chat from './shopApp/pages/Chat';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/chat',
+    element: <Chat />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

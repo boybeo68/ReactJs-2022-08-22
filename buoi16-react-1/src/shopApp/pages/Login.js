@@ -6,8 +6,11 @@ import {login, logout} from '../../redux/shopAppRedux/userSlice';
 import Parent from '../components/Parent';
 import Child from '../components/Child';
 import {customAxios} from '../config/api';
+import {auth} from '../config/firebase';
+
 import axios from 'axios';
 import {API_KEY} from '../ultils/constant';
+import {signInWithEmailAndPassword} from 'firebase/auth';
 
 import {useNavigate} from 'react-router-dom';
 export default function Login() {
@@ -18,6 +21,7 @@ export default function Login() {
   const token = useSelector((state) => state.userReducer.token);
   const submit = async () => {
     try {
+      signInWithEmailAndPassword(auth, email, password);
       const res = await axios.post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
         {
@@ -39,6 +43,7 @@ export default function Login() {
         <Button
           onClick={() => {
             dispatch(logout());
+            auth.signOut();
           }}
         >
           Logout
