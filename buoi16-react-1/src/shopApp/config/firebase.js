@@ -1,15 +1,16 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from 'firebase/app';
-import {getFirestore} from 'firebase/firebase-firestore';
+import {getFirestore} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDQW5DTTYRfQQPVQWYVf9A6rPG5miy_mAo',
-  authDomain: 'chatonline-198aa.firebaseapp.com',
-  projectId: 'chatonline-198aa',
-  storageBucket: 'chatonline-198aa.appspot.com',
-  messagingSenderId: '798043843022',
-  appId: '1:798043843022:web:bc34fea8ba0ada06aca39f',
+  apiKey: 'AIzaSyBvWZbtsBfP5YtRgK75Rh5JHGlo656-_oo',
+  authDomain: 'reactjs2208.firebaseapp.com',
+  databaseURL: 'https://reactjs2208-default-rtdb.firebaseio.com',
+  projectId: 'reactjs2208',
+  storageBucket: 'reactjs2208.appspot.com',
+  messagingSenderId: '414572900533',
+  appId: '1:414572900533:web:73379a2da4895839e94efc',
 };
 
 // Initialize Firebase
