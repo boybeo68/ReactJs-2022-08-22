@@ -38,3 +38,14 @@ ul {
 .menu-link {
   margin-right: 20px;
 }
+
+.wrap-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+}
+.chat-list {
+  height: 80vh;
+  overflow: scroll;
+}

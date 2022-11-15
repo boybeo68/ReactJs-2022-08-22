@@ -18,6 +18,8 @@ import TodoAppApi from './todoAppAPI/TodoApp';
 import AddProdct from './shopApp/pages/AddProdct';
 import Login from './shopApp/pages/Login';
 import ProtectRouter from './shopApp/components/ProtectRouter';
+import Chat from './shopApp/pages/Chat';
+import 'react-chat-elements/dist/main.css';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/chat',
+    element: (
+      <ProtectRouter>
+        <Chat />
+      </ProtectRouter>
+    ),
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

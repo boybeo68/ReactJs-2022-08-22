@@ -29,6 +29,9 @@ function Menu() {
             <Link className='menu-link' to='/add-product'>
               Add product
             </Link>
+            <Link className='menu-link' to='/chat'>
+              Chat
+            </Link>
             <Link className='menu-link' to='/login'>
               {token != null ? 'Logout' : 'Login'}
             </Link>
