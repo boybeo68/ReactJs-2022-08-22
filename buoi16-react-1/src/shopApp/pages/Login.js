@@ -29,7 +29,7 @@ export default function Login() {
         },
       );
       await signInWithEmailAndPassword(auth, email, password);
-      dispatch(login(res.data.idToken));
+      dispatch(login(res.data));
       navigate('/products');
     } catch (error) {
       console.log(error);

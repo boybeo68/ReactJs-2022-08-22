@@ -2,6 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   token: localStorage.getItem('token'),
+  userId: null,
 };
 
 const userSlice = createSlice({
@@ -10,7 +11,8 @@ const userSlice = createSlice({
   reducers: {
     login: (state, actions) => {
       localStorage.setItem('token', actions.payload);
-      state.token = actions.payload;
+      state.token = actions.payload.idToken;
+      state.userId = actions.payload.localId;
     },
     logout: (state, actions) => {
       localStorage.removeItem('token');

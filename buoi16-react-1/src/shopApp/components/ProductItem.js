@@ -5,9 +5,13 @@ import {currencyFormat} from '../ultils/constant';
 import {faHeart, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import styles from '../css/Product.module.css';
 import {useDispatch} from 'react-redux';
-import {favouriteProduct} from '../../redux/shopAppRedux/productSlice';
+import {
+  favouriteProduct,
+  favouriteProducts,
+} from '../../redux/shopAppRedux/productSlice';
 import {addCart} from '../../redux/shopAppRedux/cartSlice';
 import {useNavigate} from 'react-router-dom';
+import {customAxios} from '../config/api';
 
 function ProductItem(props) {
   const dispatch = useDispatch();
@@ -15,6 +19,8 @@ function ProductItem(props) {
   const goToDetail = (id) => {
     navigate('/products/' + id);
   };
+
+  // favouriteUser > userId > ListProduct (isFavoureite = true)
   return (
     <Card style={{width: '18rem'}}>
       <Card.Img variant='top' src={props.item.image} />
@@ -31,6 +37,7 @@ function ProductItem(props) {
           style={{cursor: 'pointer'}}
           onClick={() => {
             dispatch(favouriteProduct(props.id));
+            dispatch(favouriteProducts(props.id));
           }}
           className={styles.icon}
         >
