@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   data: {},
   error: false,
-  favourites: {},
+  favourites: null,
 };
 
 export const getListProduct = createAsyncThunk(
@@ -14,6 +14,7 @@ export const getListProduct = createAsyncThunk(
     try {
       const token = thunkApi.getState().userReducer.token;
       const res = await customAxios.get(`/products.json?auth=${token}`);
+      thunkApi.dispatch(getListFavourite());
       return res.data;
     } catch (error) {
       return {
@@ -64,15 +65,9 @@ export const favouriteProducts = createAsyncThunk(
   async (arg, thunkApi) => {
     const token = thunkApi.getState().userReducer.token;
     const userId = thunkApi.getState().userReducer.userId;
-    // const productsList = JSON.parse(
-    //   JSON.stringify(thunkApi.getState().productReducer),
-    // );
-    // const listKeyProducts = Object.keys(productsList).filter((item) => {
-    //   return productsList[item].isFavourite === true;
-    // });
-    const res = await customAxios.post(
-      `/favourite/${userId}.json?auth=${token}`,
-      {data: arg},
+    const res = await customAxios.put(
+      `/favourite/${userId}/${arg}.json?auth=${token}`,
+      true,
     );
     return res.data;
   },
@@ -119,7 +114,14 @@ const productSlice = createSlice({
           state.error = action.payload.error;
         } else {
           const favourites = action.payload;
-          state.favourites = favourites;
+          const cloneFavourite = JSON.parse(JSON.stringify(favourites));
+          const cloneState = JSON.parse(JSON.stringify(state.data));
+          if (cloneState) {
+            const listProductFavourite = Object.keys(cloneFavourite).map(
+              (item) => cloneState[item],
+            );
+            state.favourites = listProductFavourite;
+          }
         }
       })
       .addCase(getListFavourite.rejected, (state, action) => {
@@ -163,3 +165,5 @@ export const {favouriteProduct} = productSlice.actions;
 export const selectListProduct = (state) => state.productReducer;
 
 export default productSlice.reducer;
+
+// Object.keys(favourites).map(i => Products[favourite[i].data] )
