@@ -45,7 +45,7 @@ const productSlice = createSlice({
   reducers: {
     favouriteProduct: (state, action) => {
       const id = action.payload;
-      state.data[id].isFavourite = !state[id].isFavourite;
+      state.data[id].isFavourite = !state.data[id].isFavourite;
     },
   },
   extraReducers: (builder) => {
